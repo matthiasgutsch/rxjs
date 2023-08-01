@@ -1,0 +1,31 @@
+<div *ngIf="productDetail">
+
+    <div *ngIf="message" class="alert alert-success">{{message.text}}</div>
+
+
+<p-button
+label="Send Message"
+(click)="sendMessage()"
+></p-button>
+
+  <div class="row">
+    <div class="col-12">
+      <input type="text" pInputText [(ngModel)]="productDetail.id" />
+    </div>
+    <div class="col-12">
+      <input type="text" pInputText [(ngModel)]="productDetail.name" />
+    </div>
+
+    <div class="col-12">
+        <input type="text" pInputText [(ngModel)]="productDetail.price" />
+      </div>
+
+    <div class="col-12">
+
+    <p-button
+      label="save"
+      (click)="onSelectedProductDetail(productDetail)"
+    ></p-button>
+    </div>
+  </div>
+</div>

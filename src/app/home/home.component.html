@@ -1,0 +1,23 @@
+<p-messages></p-messages>
+
+<app-product-list
+  (onSelected)="onSelectedProduct($event)"
+  [productList]="products">
+</app-product-list>
+
+<p-sidebar [(visible)]="sidebarVisible">
+  <div *ngIf="selectedProduct">
+    <h3>Alert You have selected {{ selectedProduct.name }}</h3>
+  </div>
+  
+<app-product-detail
+    [productDetail]="selectedProduct"
+    (onSelected)="onSelectedProductDetail($event)">
+</app-product-detail>
+
+</p-sidebar>
+
+
+
+
+

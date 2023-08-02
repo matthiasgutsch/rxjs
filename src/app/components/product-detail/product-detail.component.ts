@@ -33,7 +33,6 @@ export class ProductDetailComponent implements OnInit {
 
   onSelectedProductDetail(productDetail: any[]) {
     this.onSelected.emit(productDetail);
-    console.log(this.productDetail.id);
     this.store.dispatch(ProductPageActions.setCurrentProduct({ currentProductId: this.productDetail.id }));
     this.store.dispatch(ProductPageActions.setLastSavedProduct({ lastSavedProductId: this.productDetail.id }));    
   }
@@ -42,7 +41,7 @@ export class ProductDetailComponent implements OnInit {
     // send message to subscribers via observable subject
     this.productService.sendMessage(this.productDetail.name + ' email sending');
     console.log('email was sending')
-    this.store.dispatch(ProductPageActions.setLastSavedProduct({ lastSavedProductId: this.productDetail.id }));    
+    this.store.dispatch(ProductPageActions.setLastSavedProduct({ lastSavedProductId: this.productDetail }));    
 
 }
 

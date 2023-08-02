@@ -97,6 +97,6 @@ export class HomeComponent implements AfterViewInit, OnInit {
     this.sidebarVisible = false;
     this.messageService.add({severity:'success', summary:'Saving', detail: this.selectedProduct.name});
     this.lastSavedProductId = this.selectedProduct.id;
-
+    this.selectedProduct =  this.productService.setProductList(this.products);
   }
 }

@@ -15,7 +15,6 @@ export class ProductService {
 
 
   private productsUrl = 'https://jsonplaceholder.typicode.com/users';
-  private productUrl = 'api/products/products.json';
 
   constructor(private http: HttpClient) { }
 

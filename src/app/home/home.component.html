@@ -1,9 +1,20 @@
 <p-messages></p-messages>
 
+<div class="row">
+  <div class="col-sm-8">
+
 <app-product-list
   (onSelected)="onSelectedProduct($event)"
   [productList]="products$ | async">
 </app-product-list>
+  </div>
+  <div class="col-sm-4">
+    <h3>Last Products </h3>
+<ng-container *ngIf="lastSavedProductId > 0">
+  {{lastSavedProductId}}
+  </ng-container>
+  </div>
+</div>
 
 
 <p-sidebar [(visible)]="sidebarVisible">
@@ -18,9 +29,6 @@
 
 </p-sidebar>
 
-
-
-{{lastSavedProductId}}
 
 
 

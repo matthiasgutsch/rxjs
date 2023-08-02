@@ -11,16 +11,16 @@ import { ProductPageActions } from 'src/app/state/actions';
 export class ProductListComponent {
   sessionId = Math.random();
   sidebarVisible: boolean = false;
+  lastSavedProductId: number;
   @Input() productList: any = [];
   @Output() public onSelected: EventEmitter<any> = new EventEmitter<any>();
   constructor(private store: Store<State>) {}
 
-  onSelectedProduct(product: number) {
+  onSelectedProduct(product: number, productId: number) {
     this.onSelected.emit(product);
     this.sidebarVisible = true;
-    this.store.dispatch(ProductPageActions.setCurrentProduct({ currentProductId: product }));
+    this.store.dispatch(ProductPageActions.setCurrentProduct({ currentProductId: productId }));
+    
   }
-
-
 
 }

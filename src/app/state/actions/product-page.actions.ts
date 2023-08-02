@@ -20,6 +20,12 @@ export const setCurrentProduct = createAction(
   props<{ currentProductId: number }>()
 );
 
+export const setLastSavedProduct = createAction(
+  '[Product Page] Set Last Saved Product',
+  props<{ lastSavedProductId: number }>()
+);
+
+
 export const clearCurrentProduct = createAction(
   '[Product Page] Clear Current Product'
 );

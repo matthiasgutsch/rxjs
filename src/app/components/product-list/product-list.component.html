@@ -7,10 +7,11 @@
         </tr>
     </ng-template>
     <ng-template pTemplate="body" let-product>
-        <tr (click)="onSelectedProduct(product)">
+        <tr (click)="onSelectedProduct(product, product.id)">
             <td>{{ product.id }}</td>
             <td>{{ product.name }}</td>
             <td>{{ product.price }}</td>
         </tr>
     </ng-template>
 </p-table>
+

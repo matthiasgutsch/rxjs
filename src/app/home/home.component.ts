@@ -36,6 +36,7 @@ export class HomeComponent implements AfterViewInit, OnInit {
   selectedProduct$: any;
   products$: Observable<Product[]>;
   errorMessage$: Observable<string>;
+  lastSavedProductId: number;
 
   products = [
     { name: 'Rice', id: 1, price: 200 },
@@ -84,9 +85,7 @@ export class HomeComponent implements AfterViewInit, OnInit {
     });
 
     this.sidebarVisible = true;
-    this.productService.setProductList(this.products);
-    
-    this.store.dispatch(ProductPageActions.setCurrentProduct({ currentProductId: 1 }));
+    this.productService.setProductList(this.products);    
   }
 
   onSelectedProductDetail(productDetail: any[]) {
@@ -97,5 +96,7 @@ export class HomeComponent implements AfterViewInit, OnInit {
   onSelectedProductDetailChange() {
     this.sidebarVisible = false;
     this.messageService.add({severity:'success', summary:'Saving', detail: this.selectedProduct.name});
+    this.lastSavedProductId = this.selectedProduct.id;
+
   }
 }

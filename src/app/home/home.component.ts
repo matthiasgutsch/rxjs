@@ -38,18 +38,6 @@ export class HomeComponent implements AfterViewInit, OnInit {
   errorMessage$: Observable<string>;
   lastSavedProductId: Observable<Product[]>;
 
-  products = [
-    { name: 'Rice', id: 1, price: 200 },
-    { name: 'Beans', id: 2, price: 300 },
-    { name: 'Bananna', id: 3, price: 400 },
-  ];
-
-  productsAdd = [
-    { name: 'Rice1', id: 1, price: 200 },
-    { name: 'Beans1', id: 2, price: 300 },
-    { name: 'Bananna1', id: 3, price: 400 },
-  ];
-
   constructor(private productService: ProductService,
     private messageService: MessageService,
     private router: Router,
@@ -85,11 +73,9 @@ export class HomeComponent implements AfterViewInit, OnInit {
     });
 
     this.sidebarVisible = true;
-    this.productService.setProductList(this.products);    
   }
 
   onSelectedProductDetail(productDetail: any[]) {
-    this.productService.setProductList(this.products = this.productsAdd);
     this.onSelectedProductDetailChange();
   }
 

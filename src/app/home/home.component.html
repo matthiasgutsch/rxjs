@@ -1,14 +1,14 @@
 <p-messages></p-messages>
 
 <div class="row">
-  <div class="col-sm-8">
+  <div class="col-sm-12">
 
 <app-product-list
   (onSelected)="onSelectedProduct($event)"
   [productList]="products$ | async">
 </app-product-list>
   </div>
-  <div class="col-sm-4">
+  <div class="col-sm-12">
     <h3>Last Updated </h3>
 <ng-container *ngIf="lastSavedProductId">
   {{lastSavedProductId | json}}

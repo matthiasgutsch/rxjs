@@ -27,7 +27,6 @@ export class HomeComponent implements AfterViewInit, OnInit {
   sidebarVisible: boolean = false;
   message: any;
   subscription: Subscription;
-  todos$: Observable<Product[]>;
   newTodoText: string = "";
   displayCode$: Observable<boolean>;
   displayDescription$: Observable<boolean>;
@@ -48,16 +47,16 @@ export class HomeComponent implements AfterViewInit, OnInit {
     }
 
   ngOnInit(): void {
+    this.store.dispatch(ProductPageActions.loadProducts());
+
     this.selectedProduct$ = this.store.select(getCurrentProduct);
     this.products$ = this.store.select(getProducts);
 
     this.errorMessage$ = this.store.select(getError);
-    this.store.dispatch(ProductPageActions.loadProducts());
 
     this.displayCode$ = this.store.select(getShowProductCode);
     this.displayDescription$ = this.store.select(getShowProductDescription);
     this.displayFilter$ = this.store.select(getShowProductFilter);
-
 
   }
 
@@ -80,7 +79,8 @@ export class HomeComponent implements AfterViewInit, OnInit {
   onSelectedProductDetailChange() {
     this.sidebarVisible = false;
     this.messageService.add({severity:'success', summary:'Saving', detail: this.selectedProduct.name});
+
     this.lastSavedProduct = this.selectedProduct;
-    
+    this.store.dispatch(ProductPageActions.setLastSavedProduct({ lastSavedProductId: this.lastSavedProduct.id }));
   }
 }

@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable, Subject, throwError } from 'rxjs';
 import { Product } from '../model/product';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-
 import { catchError, tap, map } from 'rxjs/operators';
 
 @Injectable()
@@ -14,8 +13,9 @@ export class ProductService {
   productList$ = this.productListBus$.asObservable();
 
   private productsUrl = 'https://jsonplaceholder.typicode.com/users';
-  constructor(private http: HttpClient) { }
+  private productsUrlId = 'https://jsonplaceholder.typicode.com/users/1';
 
+  constructor(private http: HttpClient) { }
 
   setProduct(product: any) {
     this.product$.next(product);
@@ -41,6 +41,14 @@ export class ProductService {
       );
   }
 
+  getProductsId(): Observable<any> {
+    return this.http.get<any>(this.productsUrlId)
+      .pipe(
+        tap(data => console.log(JSON.stringify(data))),
+        catchError(this.handleError)
+      );
+  }
+
 
   getProduct(id: number): Observable<Product | undefined> {
     return this.getProducts()
@@ -59,7 +67,6 @@ export class ProductService {
         catchError(this.handleError)
       );
   }
-
 
   deleteProduct(id: number): Observable<{}> {
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' });

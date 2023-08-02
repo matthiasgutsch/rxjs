@@ -10,6 +10,7 @@ export interface ProductState {
   showProductDescription: boolean;
   showProductFilter: boolean;
   currentProductId: number | null;
+  lastSavedProductId: any | null;
   products: Product[];
   error: string;
 }
@@ -19,6 +20,7 @@ const initialState: ProductState = {
   showProductDescription: true,
   showProductFilter: true,
   currentProductId: null,
+  lastSavedProductId: null,
   products: [],
   error: ''
 };
@@ -51,6 +53,14 @@ export const productReducer = createReducer<ProductState>(
       currentProductId: action.currentProductId
     };
   }),
+
+  on(ProductPageActions.setLastSavedProduct, (state, action): ProductState => {
+    return {
+      ...state,
+      lastSavedProductId: action.lastSavedProductId
+    };
+  }),
+  
   on(ProductPageActions.clearCurrentProduct, (state): ProductState => {
     return {
       ...state,

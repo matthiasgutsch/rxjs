@@ -25,6 +25,7 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { EntityDataModule } from '@ngrx/data';
 import { environment } from 'src/environments/environment';
 import { entityConfig } from './entity-metadata';
+import { MainComponent } from './main/main.component';
 
 
 export const metaReducers: MetaReducer<any>[] = !environment.production ? [] : [];
@@ -36,7 +37,8 @@ export const metaReducers: MetaReducer<any>[] = !environment.production ? [] : [
     HomeComponent,
     ProductListComponent,
     ProductDetailComponent,
-    SidebarComponent
+    SidebarComponent,
+    MainComponent
 
   ],
   imports: [

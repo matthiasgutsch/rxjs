@@ -8,9 +8,10 @@
   [productList]="products$ | async">
 </app-product-list>
   </div>
+
+  
 <ng-container *ngIf="lastSavedProduct">
   <div class="col-sm-12">
-
   <h3>Last Updated </h3>
   {{lastSavedProduct.id}}
 

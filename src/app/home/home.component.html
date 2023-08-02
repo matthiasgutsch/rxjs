@@ -2,8 +2,15 @@
 
 <app-product-list
   (onSelected)="onSelectedProduct($event)"
-  [productList]="products">
+  [productList]="products$ | async">
 </app-product-list>
+
+<br>
+<app-product-list
+  (onSelected)="onSelectedProduct($event)"
+  [productList]="productsAdd">
+</app-product-list>
+
 
 <p-sidebar [(visible)]="sidebarVisible">
   <div *ngIf="selectedProduct">

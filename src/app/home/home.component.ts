@@ -7,7 +7,6 @@ import { ProductDetailComponent } from '../components/product-detail/product-det
 import { Observable, Subject, Subscription } from 'rxjs';
 import { Product } from '../model/product';
 import { Store } from '@ngrx/store';
-import { BooksApiActions } from '../state/books.actions';
 import { Route, Router } from '@angular/router';
 import { ProductPageActions } from '../state/actions';
 
@@ -60,25 +59,17 @@ export class HomeComponent implements AfterViewInit, OnInit {
     }
 
   ngOnInit(): void {
-
     this.selectedProduct$ = this.store.select(getCurrentProduct);
     this.products$ = this.store.select(getProducts);
 
-    // Do NOT subscribe here because it uses an async pipe
     this.errorMessage$ = this.store.select(getError);
     this.store.dispatch(ProductPageActions.loadProducts());
-    // Do NOT subscribe here because it uses an async pipe
 
-    // Do NOT subscribe here because it uses an async pipe
     this.displayCode$ = this.store.select(getShowProductCode);
     this.displayDescription$ = this.store.select(getShowProductDescription);
     this.displayFilter$ = this.store.select(getShowProductFilter);
 
-    this.apiService
-    .getBooks()
-    .subscribe((books) =>
-      this.store.dispatch(BooksApiActions.retrievedBookList({ books }))
-    );
+
   }
 
   ngAfterViewInit() {
@@ -86,14 +77,16 @@ export class HomeComponent implements AfterViewInit, OnInit {
   }
 
   onSelectedProduct(product: string) {
+    
     this.productService.setProduct(product);
     this.productService.selectedProduct$.subscribe((value) => {
       this.selectedProduct = value;
     });
+
     this.sidebarVisible = true;
     this.productService.setProductList(this.products);
+    
     this.store.dispatch(ProductPageActions.setCurrentProduct({ currentProductId: 1 }));
-
   }
 
   onSelectedProductDetail(productDetail: any[]) {

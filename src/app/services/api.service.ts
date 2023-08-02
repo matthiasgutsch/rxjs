@@ -21,23 +21,4 @@ export class ApiService {
 
   }
 
-
-  getBooks(): Observable<Array<Book>> {
-    return this.http
-      .get<{ items: Book[] }>(
-        'https://www.googleapis.com/books/v1/volumes?maxResults=5&orderBy=relevance&q=oliver%20sacks'
-      )
-      .pipe(map((books) => books.items || []));
-  }
-
-  create(dto: any) {
-    this.httpClient
-      .post("https://jsonplaceholder.typicode.com/users", dto)
-      .pipe(map(res => this.userStore$.value.push(res)))
-      .subscribe();
-  }
-
-  get(): Observable<Product> {
-    return this.httpClient.get<Product>('/some/rest/resource/path'+`/`);
-  }
 }

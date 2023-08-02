@@ -14,7 +14,7 @@ export class ProductService {
   productList$ = this.productListBus$.asObservable();
 
 
-  private productsUrl = 'api/products';
+  private productsUrl = 'https://jsonplaceholder.typicode.com/users';
   private productUrl = 'api/products/products.json';
 
   constructor(private http: HttpClient) { }

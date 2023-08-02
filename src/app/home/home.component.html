@@ -9,9 +9,9 @@
 </app-product-list>
   </div>
   <div class="col-sm-4">
-    <h3>Last Products </h3>
-<ng-container *ngIf="lastSavedProductId > 0">
-  {{lastSavedProductId}}
+    <h3>Last Updated </h3>
+<ng-container *ngIf="lastSavedProductId">
+  {{lastSavedProductId | json}}
   </ng-container>
   </div>
 </div>

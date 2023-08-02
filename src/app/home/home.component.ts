@@ -14,8 +14,7 @@ import { State, getCurrentProduct, getError, getProducts, getShowProductCode, ge
 
 @Component({
   selector: 'app-home',
-  templateUrl: './home.component.html',
-  styleUrls: ['./home.component.sass']
+  templateUrl: './home.component.html'
 })
 export class HomeComponent implements AfterViewInit, OnInit {
 

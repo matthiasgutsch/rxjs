@@ -51,6 +51,7 @@ export class ProductService {
 
 
   getProduct(id: number): Observable<Product | undefined> {
+    
     return this.getProducts()
       .pipe(
         map((products: Product[]) => products.find(p => p.id === id))

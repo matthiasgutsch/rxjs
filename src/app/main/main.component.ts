@@ -11,8 +11,7 @@ import { Product } from '../model/product';
 
 @Component({
   selector: 'app-main',
-  templateUrl: './main.component.html',
-  styleUrls: ['./main.component.sass']
+  templateUrl: './main.component.html'
 })
 export class MainComponent implements OnInit{
 
@@ -33,6 +32,7 @@ export class MainComponent implements OnInit{
 
     this.product = this.productService.getProductsId();
     console.log(this.product)
+    
     
   }
 

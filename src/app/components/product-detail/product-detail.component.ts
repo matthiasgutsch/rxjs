@@ -7,8 +7,7 @@ import { Store } from '@ngrx/store';
 
 @Component({
   selector: 'app-product-detail',
-  templateUrl: './product-detail.component.html',
-  styleUrls: ['./product-detail.component.sass'],
+  templateUrl: './product-detail.component.html'
 })
 
 export class ProductDetailComponent implements OnInit {
@@ -42,7 +41,6 @@ export class ProductDetailComponent implements OnInit {
     this.productService.sendMessage(this.productDetail.name + ' email sending');
     console.log('email was sending')
     this.store.dispatch(ProductPageActions.setLastSavedProduct({ lastSavedProductId: this.productDetail }));    
-
 }
 
 }

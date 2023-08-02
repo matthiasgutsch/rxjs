@@ -5,8 +5,7 @@ import { ProductPageActions } from 'src/app/state/actions';
 
 @Component({
   selector: 'app-product-list',
-  templateUrl: './product-list.component.html',
-  styleUrls: ['./product-list.component.sass'],
+  templateUrl: './product-list.component.html'
 })
 export class ProductListComponent {
   sessionId = Math.random();

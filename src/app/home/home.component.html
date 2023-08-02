@@ -1,4 +1,4 @@
-<p-messages></p-messages>
+<p-toast></p-toast>
 
 <div class="row">
   <div class="col-sm-12">
@@ -9,7 +9,7 @@
 </app-product-list>
   </div>
 
-  
+
 <ng-container *ngIf="lastSavedProduct">
   <div class="col-sm-12">
   <h3>Last Updated </h3>
@@ -24,7 +24,7 @@
 
 <p-sidebar [(visible)]="sidebarVisible">
   <div *ngIf="selectedProduct">
-    <h3>Alert You have selected {{ selectedProduct.name }}</h3>
+    <h5>{{ selectedProduct.name }}</h5>
   </div>
   
 <app-product-detail

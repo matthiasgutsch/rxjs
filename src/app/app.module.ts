@@ -26,6 +26,7 @@ import { EntityDataModule } from '@ngrx/data';
 import { environment } from 'src/environments/environment';
 import { entityConfig } from './entity-metadata';
 import { MainComponent } from './main/main.component';
+import { ToastModule } from 'primeng/toast';
 
 
 export const metaReducers: MetaReducer<any>[] = !environment.production ? [] : [];
@@ -50,6 +51,7 @@ export const metaReducers: MetaReducer<any>[] = !environment.production ? [] : [
     BrowserAnimationsModule,
     AppRoutingModule,
     ButtonModule,
+    ToastModule,
     FormsModule,
     InputTextModule,
     StoreModule.forFeature('products', productReducer),

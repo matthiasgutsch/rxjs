@@ -16,7 +16,7 @@ import { ProductListComponent } from '../components/product-list/product-list.co
   templateUrl: './main.component.html'
 })
 export class MainComponent implements AfterViewInit, OnInit{
-
+  lastSavedProduct: any;
   selectedProduct: any;
   sessionId: any;
   sidebarVisible: boolean = false;
@@ -54,7 +54,7 @@ export class MainComponent implements AfterViewInit, OnInit{
 
 
   ngOnInit(): void {
-    
+    this.lastSavedProduct = this.selectedProduct;
     this.lastSavedProduct$ = this.store.select(getLastSavedProductId);
   }
 

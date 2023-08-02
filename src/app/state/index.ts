@@ -33,7 +33,7 @@ export const getCurrentProductId = createSelector(
 
 export const getLastSavedProductId = createSelector(
     getProductFeatureState,
-    state => state.clastSavedProductId
+    state => state.currentProductId
 );
 
 export const getCurrentProduct = createSelector(

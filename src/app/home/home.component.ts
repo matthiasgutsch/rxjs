@@ -36,7 +36,7 @@ export class HomeComponent implements AfterViewInit, OnInit {
   selectedProduct$: any;
   products$: Observable<Product[]>;
   errorMessage$: Observable<string>;
-  lastSavedProductId: Observable<Product[]>;
+  lastSavedProduct: any;
 
   constructor(private productService: ProductService,
     private messageService: MessageService,
@@ -66,12 +66,10 @@ export class HomeComponent implements AfterViewInit, OnInit {
   }
 
   onSelectedProduct(product: string) {
-    
     this.productService.setProduct(product);
     this.productService.selectedProduct$.subscribe((value) => {
       this.selectedProduct = value;
     });
-
     this.sidebarVisible = true;
   }
 
@@ -82,6 +80,7 @@ export class HomeComponent implements AfterViewInit, OnInit {
   onSelectedProductDetailChange() {
     this.sidebarVisible = false;
     this.messageService.add({severity:'success', summary:'Saving', detail: this.selectedProduct.name});
-    this.lastSavedProductId = this.selectedProduct;
+    this.lastSavedProduct = this.selectedProduct;
+    
   }
 }

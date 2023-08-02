@@ -20,7 +20,6 @@ export class ProductListComponent {
     this.onSelected.emit(product);
     this.sidebarVisible = true;
     this.store.dispatch(ProductPageActions.setCurrentProduct({ currentProductId: productId }));
-    
   }
 
 }

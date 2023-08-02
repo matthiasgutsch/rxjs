@@ -40,7 +40,10 @@ export class ProductDetailComponent implements OnInit {
 
   sendMessage(): void {
     // send message to subscribers via observable subject
-    this.productService.sendMessage('Message from Home Component to App Component!');
+    this.productService.sendMessage(this.productDetail.name + ' email sending');
+    console.log('email was sending')
+    this.store.dispatch(ProductPageActions.setLastSavedProduct({ lastSavedProductId: this.productDetail.id }));    
+
 }
 
 }

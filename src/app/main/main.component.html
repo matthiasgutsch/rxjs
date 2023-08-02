@@ -1,9 +1,6 @@
-{{lastSavedProduct$ | async}}
+{{lastSavedProduct$ | async | json}}
 
 
-
-    {{lastSavedProduct}}
-
-    <app-product-list
+    <app-product-list *ngIf="lastSavedProduct$"
   [productList]="lastSavedProduct$ | async">
 </app-product-list>

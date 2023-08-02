@@ -78,8 +78,7 @@ export class HomeComponent implements AfterViewInit, OnInit {
   onSelectedProductDetailChange() {
     this.sidebarVisible = false;
     this.messageService.add({severity:'success', summary:'Saving', detail: this.selectedProduct.name});
-
     this.lastSavedProduct = this.selectedProduct;
-    this.store.dispatch(ProductPageActions.setLastSavedProduct({ lastSavedProductId: this.lastSavedProduct.id }));
+    this.store.dispatch(ProductPageActions.setLastSavedProduct({ lastSavedProductId: this.lastSavedProduct }));
   }
 }

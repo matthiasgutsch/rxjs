@@ -22,7 +22,7 @@ export const setCurrentProduct = createAction(
 
 export const setLastSavedProduct = createAction(
   '[Product Page] Set Last Saved Product',
-  props<{ lastSavedProductId: Product }>()
+  props<{ lastSavedProductId: Product[] }>()
 );
 
 

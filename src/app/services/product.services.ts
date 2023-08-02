@@ -13,9 +13,7 @@ export class ProductService {
   private productListBus$ = new BehaviorSubject<any>([]);
   productList$ = this.productListBus$.asObservable();
 
-
   private productsUrl = 'https://jsonplaceholder.typicode.com/users';
-
   constructor(private http: HttpClient) { }
 
 
@@ -30,6 +28,7 @@ export class ProductService {
   sendMessage(message: string) {
     this.subject.next({ text: message });
   }
+
   getMessage(): Observable<any> {
     return this.subject.asObservable();
   }

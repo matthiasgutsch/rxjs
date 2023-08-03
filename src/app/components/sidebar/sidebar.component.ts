@@ -12,8 +12,7 @@ export class SidebarComponent {
 
 
   checkChangedFilter(): void {
-    this.displayFilterChanged.emit();
-    
+    this.displayFilterChanged.emit();  
   }
 
 

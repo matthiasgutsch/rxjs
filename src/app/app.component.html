@@ -1,4 +1,4 @@
-<div class="sidebar">
+<div class="sidebar" [ngClass]="{'sidebar-close': displayFilter$ | async}">
   <app-sidebar
     [displayFilter]="displayFilter$ | async"
     (displayFilterChanged)="checkChangedFilter()"
@@ -6,7 +6,7 @@
   </app-sidebar>
 </div>
 
-<div class="main">
+<div class="main" [ngClass]="{'sidebar-close': displayFilter$ | async}">
   <div class="main-inner">
     <router-outlet></router-outlet>
   </div>

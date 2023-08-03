@@ -17,7 +17,7 @@ import { ProductListComponent } from '../components/product-list/product-list.co
 })
 export class MainComponent implements AfterViewInit, OnInit{
   lastSavedProduct: any;
-  selectedProduct: Product;
+  selectedProduct: any;
   sessionId: any;
   sidebarVisible: boolean = false;
   message: any;
@@ -27,10 +27,12 @@ export class MainComponent implements AfterViewInit, OnInit{
   displayDescription$: Observable<boolean>;
   displayFilter$: Observable<boolean>;
   productsSize: number;
-  selectedProduct$: any;
+  selectedProduct$: Product[];
   products$: Observable<Product[]>;
   errorMessage$: Observable<string>;
   lastSavedProduct$: Observable<Product[]>;
+  lastSavedProductArray$: Observable<Product[]>;
+
   @ViewChild(ProductListComponent) productList: Product;
 
   constructor(private productService: ProductService,
@@ -49,10 +51,9 @@ export class MainComponent implements AfterViewInit, OnInit{
 
 
   ngOnInit(): void {
-    this.lastSavedProduct = this.selectedProduct;
+   
     this.lastSavedProduct$ = this.store.select(getLastSavedProductId);
 
-    this.selectedProduct$ = this.productService.getProductsId(1);
   }
 
 

@@ -24,7 +24,7 @@ export class HomeComponent implements AfterViewInit, OnInit {
   selectedProduct: any;
   sessionId: any;
   sidebarVisible: boolean = false;
-  list: boolean = false;
+  showList: boolean = false;
 
   message: any;
   subscription: Subscription;

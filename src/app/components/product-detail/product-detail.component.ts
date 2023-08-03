@@ -36,6 +36,11 @@ export class ProductDetailComponent implements OnInit {
     this.store.dispatch(ProductPageActions.setLastSavedProduct({ lastSavedProductId: this.productDetail }));    
   }
 
+  setProductList(productDetail: any[]) {
+    this.store.dispatch(ProductPageActions.setCurrentProduct({ currentProductId: this.productDetail.id }));
+    this.store.dispatch(ProductPageActions.setLastSavedProduct({ lastSavedProductId: this.productDetail }));    
+  }
+
   sendMessage(): void {
     // send message to subscribers via observable subject
     this.productService.sendMessage(this.productDetail.name + ' email sending');

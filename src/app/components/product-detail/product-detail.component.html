@@ -17,18 +17,16 @@ label="Send Message"
     </div>
 
     <div class="col-12">
-        <input type="text" pInputText [(ngModel)]="productDetail.email" />
-      </div>
-
-      <div class="col-12">
-        <input type="text" pInputText [(ngModel)]="productDetail.company.name" />
-      </div>
+      <input type="text" pInputText [(ngModel)]="productDetail.email" />
+    </div>
 
     <div class="col-12">
+      <input type="text" pInputText [(ngModel)]="productDetail.company.name" />
+    </div>
 
-    <p-button label="save" (click)="updateProduct(productDetail)"></p-button>
-    <p-button label="add to list" (click)="onSelectedProductDetail(productDetail)"></p-button>
-
+    <div class="col-12">
+      <p-button label="save" (click)="updateProduct(productDetail)"></p-button>
+      <p-button label="add to list" (click)="onSelectedProductDetail(productDetail)"></p-button>
     </div>
   </div>
 </div>

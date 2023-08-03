@@ -6,7 +6,7 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { ProductService } from './services/product.services';
 import { InputTextModule } from 'primeng/inputtext';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ButtonModule } from 'primeng/button';
 import { TableModule } from 'primeng/table';
 import { SidebarModule } from 'primeng/sidebar';
@@ -51,6 +51,7 @@ export const metaReducers: MetaReducer<any>[] = !environment.production ? [] : [
     BrowserAnimationsModule,
     AppRoutingModule,
     ButtonModule,
+    ReactiveFormsModule,
     ToastModule,
     FormsModule,
     InputTextModule,

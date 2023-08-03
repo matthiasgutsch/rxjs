@@ -4,6 +4,8 @@ import { Subscription } from 'rxjs';
 import { ProductPageActions } from 'src/app/state/actions';
 import { State } from 'src/app/state';
 import { Store } from '@ngrx/store';
+import { Product } from 'src/app/model/product';
+import { FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-product-detail',
@@ -17,6 +19,8 @@ export class ProductDetailComponent implements OnInit {
   sidebarVisible: boolean = false;
   subscription: Subscription;
   message: any;
+  product: Product;
+  productForm: FormGroup;
 
   constructor(private productService: ProductService,
     private store: Store<State>) {
@@ -30,6 +34,33 @@ export class ProductDetailComponent implements OnInit {
     }
   }
 
+
+  displayProduct(product: Product | null): void {
+    if (product && this.productForm) {
+      // Reset the form back to pristine
+      this.productForm.reset();
+
+      // Update the data on the form
+      this.productForm.patchValue({
+        productName: product.productName,
+        productCode: product.productCode,
+        starRating: product.starRating,
+        description: product.description
+      });
+    }
+  }
+
+
+  updateProduct(product: Product): void {
+    this.store.dispatch(ProductPageActions.updateProduct({ product }));
+    console.log(product)
+  }
+
+  saveProduct(product: Product): void {
+    this.store.dispatch(ProductPageActions.createProduct({ product }));
+  }
+
+  
   onSelectedProductDetail(productDetail: any[]) {
     this.onSelected.emit(productDetail);
     this.store.dispatch(ProductPageActions.setCurrentProduct({ currentProductId: this.productDetail.id }));

@@ -73,6 +73,14 @@ export class HomeComponent implements AfterViewInit, OnInit {
     this.sidebarVisible = true;
   }
 
+  saveProduct(product: Product): void {
+    this.store.dispatch(ProductPageActions.createProduct({ product }));
+  }
+
+  updateProduct(product: Product): void {
+    this.store.dispatch(ProductPageActions.updateProduct({ product }));
+  }
+
   onSelectedProductDetail(productDetail: any[]) {
     this.onSelectedProductDetailChange();
   }

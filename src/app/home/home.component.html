@@ -25,6 +25,10 @@
   <app-product-detail
     [productDetail]="selectedProduct"
     (onSelected)="onSelectedProductDetail($event)"
+    (create)="saveProduct($any($event))"
+    (update)="updateProduct($any($event))"
+    
+
   ></app-product-detail>
 
 </p-sidebar>

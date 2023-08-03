@@ -35,18 +35,10 @@ export class ProductService {
 
   getProducts(): Observable<Product[]> {
     return this.http.get<Product[]>(this.productsUrl)
-      .pipe(
-        tap(data => console.log(JSON.stringify(data))),
-        catchError(this.handleError)
-      );
   }
 
-  getProductsId(): Observable<any> {
-    return this.http.get<any>(this.productsUrlId)
-      .pipe(
-        tap(data => console.log(JSON.stringify(data))),
-        catchError(this.handleError)
-      );
+  getProductsId(id: number): Observable<Product> {
+    return this.http.get<Product>(this.productsUrlId + '/?ID=' + id)
   }
 
 

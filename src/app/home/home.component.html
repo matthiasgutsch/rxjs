@@ -2,37 +2,37 @@
 
 <div class="row">
   <div class="col-sm-12">
-
-<app-product-list
-  (onSelected)="onSelectedProduct($event)"
-  [productList]="products$ | async">
-</app-product-list>
+    <app-product-list
+      (onSelected)="onSelectedProduct($event)"
+      [productList]="products$ | async"
+    >
+    </app-product-list>
   </div>
 
-
-<ng-container *ngIf="lastSavedProduct">
-  <div class="col-sm-12">
-  {{lastSavedProduct.id}}
-  {{lastSavedProduct.name}}
-</div>
+  <ng-container *ngIf="lastSavedProduct">
+    <div class="col-sm-12">
+      {{ lastSavedProduct.id }}
+      {{ lastSavedProduct.name }}
+    </div>
   </ng-container>
-
 </div>
-
 
 <p-sidebar [(visible)]="sidebarVisible">
   <div *ngIf="selectedProduct">
     <h5>{{ selectedProduct.name }}</h5>
   </div>
-  
-<app-product-detail
-    [productDetail]="selectedProduct"
-    (onSelected)="onSelectedProductDetail($event)">
-</app-product-detail>
 
+  <app-product-detail
+    [productDetail]="selectedProduct"
+    (onSelected)="onSelectedProductDetail($event)"
+  >
+  </app-product-detail>
 </p-sidebar>
 
-
-
-
-
+<p-sidebar [(visible)]="list">
+  <app-product-detail
+    [productDetail]="selectedProduct"
+    (onSelected)="onSelectedProductDetail($event)"
+  >
+  </app-product-detail>
+</p-sidebar>

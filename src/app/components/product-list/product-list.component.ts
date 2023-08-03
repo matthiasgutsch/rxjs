@@ -11,8 +11,10 @@ export class ProductListComponent {
   sessionId = Math.random();
   sidebarVisible: boolean = false;
   lastSavedProductId: number;
+
   @Input() productList: any = [];
   @Output() public onSelected: EventEmitter<any> = new EventEmitter<any>();
+
   constructor(private store: Store<State>) {}
 
   onSelectedProduct(product: number, productId: number) {

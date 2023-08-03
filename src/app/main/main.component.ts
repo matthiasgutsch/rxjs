@@ -17,7 +17,7 @@ import { ProductListComponent } from '../components/product-list/product-list.co
 })
 export class MainComponent implements AfterViewInit, OnInit{
   lastSavedProduct: any;
-  selectedProduct: any;
+  selectedProduct: Product;
   sessionId: any;
   sidebarVisible: boolean = false;
   message: any;
@@ -31,7 +31,6 @@ export class MainComponent implements AfterViewInit, OnInit{
   products$: Observable<Product[]>;
   errorMessage$: Observable<string>;
   lastSavedProduct$: Observable<Product[]>;
-
   @ViewChild(ProductListComponent) productList: Product;
 
   constructor(private productService: ProductService,
@@ -39,13 +38,9 @@ export class MainComponent implements AfterViewInit, OnInit{
     private router: Router,
     private store: Store<State>,
     private apiService: ApiService) {
-
       this.store.dispatch(ProductPageActions.loadProducts());
-
-      this.selectedProduct$ = this.store.select(getCurrentProduct);
-      this.products$ = this.store.select(getProducts);
-
-      
+      //this.selectedProduct$ = this.store.select(getCurrentProduct);
+      this.products$ = this.store.select(getProducts);    
     }
 
     ngAfterViewInit() {
@@ -56,6 +51,8 @@ export class MainComponent implements AfterViewInit, OnInit{
   ngOnInit(): void {
     this.lastSavedProduct = this.selectedProduct;
     this.lastSavedProduct$ = this.store.select(getLastSavedProductId);
+
+    this.selectedProduct$ = this.productService.getProductsId(1);
   }
 
 

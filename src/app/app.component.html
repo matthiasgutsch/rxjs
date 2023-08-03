@@ -1,14 +1,13 @@
-
-
 <div class="sidebar">
-      <app-sidebar></app-sidebar>
+  <app-sidebar
+    [displayFilter]="displayFilter$ | async"
+    (displayFilterChanged)="checkChangedFilter()"
+  >
+  </app-sidebar>
 </div>
-        
-        <div class="main">
-            <div class="main-inner">
-            <router-outlet></router-outlet>
-        </div>
+
+<div class="main">
+  <div class="main-inner">
+    <router-outlet></router-outlet>
   </div>
-
-
-
+</div>

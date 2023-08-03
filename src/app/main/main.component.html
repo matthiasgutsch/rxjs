@@ -1,4 +1,4 @@
-{{lastSavedProduct$ | async}}
+{{lastSavedProduct$ | async | json}}
 
 <app-product-list
   [productList]="lastSavedProduct$ | async">

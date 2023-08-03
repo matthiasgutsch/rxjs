@@ -23,7 +23,7 @@
     <h5>{{ selectedProduct.name }}</h5>
   </div>
   <app-product-detail
-    [productDetail]="selectedProduct"
+    [product]="selectedProduct"
     (onSelected)="onSelectedProductDetail($event)"
     (create)="saveProduct($any($event))"
     (update)="updateProduct($any($event))"

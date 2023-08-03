@@ -10,14 +10,21 @@ import { Store } from '@ngrx/store';
 import { Route, Router } from '@angular/router';
 import { ProductPageActions } from '../state/actions';
 
-import { State, getCurrentProduct, getError, getProducts, getShowProductCode, getShowProductDescription, getShowProductFilter } from 'src/app/state';
+import {
+  State,
+  getCurrentProduct,
+  getError,
+  getProducts,
+  getShowProductCode,
+  getShowProductDescription,
+  getShowProductFilter,
+} from 'src/app/state';
 
 @Component({
   selector: 'app-home',
-  templateUrl: './home.component.html'
+  templateUrl: './home.component.html',
 })
 export class HomeComponent implements AfterViewInit, OnInit {
-
   @ViewChild(ProductListComponent) productList: Product;
   @ViewChild(ProductDetailComponent) productDetail: Product;
 
@@ -28,7 +35,7 @@ export class HomeComponent implements AfterViewInit, OnInit {
 
   message: any;
   subscription: Subscription;
-  newTodoText: string = "";
+  newTodoText: string = '';
   displayCode$: Observable<boolean>;
   displayDescription$: Observable<boolean>;
   displayFilter$: Observable<boolean>;
@@ -38,27 +45,22 @@ export class HomeComponent implements AfterViewInit, OnInit {
   errorMessage$: Observable<string>;
   lastSavedProduct: any;
 
-  constructor(private productService: ProductService,
+  constructor(
+    private productService: ProductService,
     private messageService: MessageService,
     private router: Router,
     private store: Store<State>,
-    private apiService: ApiService) {
-
-
-    }
+    private apiService: ApiService
+  ) {}
 
   ngOnInit(): void {
     this.store.dispatch(ProductPageActions.loadProducts());
-
     this.selectedProduct$ = this.store.select(getCurrentProduct);
     this.products$ = this.store.select(getProducts);
-
     this.errorMessage$ = this.store.select(getError);
-
     this.displayCode$ = this.store.select(getShowProductCode);
     this.displayDescription$ = this.store.select(getShowProductDescription);
     this.displayFilter$ = this.store.select(getShowProductFilter);
-
   }
 
   ngAfterViewInit() {
@@ -87,8 +89,16 @@ export class HomeComponent implements AfterViewInit, OnInit {
 
   onSelectedProductDetailChange() {
     this.sidebarVisible = false;
-    this.messageService.add({severity:'success', summary:'Saving', detail: this.selectedProduct.name});
+    this.messageService.add({
+      severity: 'success',
+      summary: 'Saving',
+      detail: this.selectedProduct.name,
+    });
     this.lastSavedProduct = this.selectedProduct;
-    this.store.dispatch(ProductPageActions.setLastSavedProduct({ lastSavedProductId: this.lastSavedProduct }));
+    this.store.dispatch(
+      ProductPageActions.setLastSavedProduct({
+        lastSavedProductId: this.lastSavedProduct,
+      })
+    );
   }
 }

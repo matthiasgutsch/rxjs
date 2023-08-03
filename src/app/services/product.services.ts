@@ -13,7 +13,6 @@ export class ProductService {
   productList$ = this.productListBus$.asObservable();
 
   private productsUrl = 'http://localhost:3000/posts';
-  private productsUrlId = 'https://jsonplaceholder.typicode.com/users/1';
 
   constructor(private http: HttpClient) { }
 

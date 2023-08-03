@@ -1,4 +1,4 @@
-<div *ngIf="productDetail">
+<div *ngIf="product">
 
     <div *ngIf="message" class="alert alert-success">{{message.text}}</div>
 
@@ -10,23 +10,23 @@ label="Send Message"
 
   <div class="row">
     <div class="col-12">
-      <input type="text" pInputText [(ngModel)]="productDetail.id" />
+      <input type="text" pInputText [(ngModel)]="product.id" />
     </div>
     <div class="col-12">
-      <input type="text" pInputText [(ngModel)]="productDetail.name" />
-    </div>
-
-    <div class="col-12">
-      <input type="text" pInputText [(ngModel)]="productDetail.email" />
+      <input type="text" pInputText [(ngModel)]="product.name" />
     </div>
 
     <div class="col-12">
-      <input type="text" pInputText [(ngModel)]="productDetail.company.name" />
+      <input type="text" pInputText [(ngModel)]="product.email" />
     </div>
 
     <div class="col-12">
-      <p-button label="save" (click)="updateProduct(productDetail)"></p-button>
-      <p-button label="add to list" (click)="onSelectedProductDetail(productDetail)"></p-button>
+      <input type="text" pInputText [(ngModel)]="product.company.name" />
+    </div>
+
+    <div class="col-12">
+      <p-button label="save" (click)="updateProduct(product)"></p-button>
+      <p-button label="add to list" (click)="onSelectedProductDetail(product)"></p-button>
     </div>
   </div>
 </div>

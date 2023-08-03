@@ -13,14 +13,15 @@ import { FormGroup } from '@angular/forms';
 })
 
 export class ProductDetailComponent implements OnInit {
+
   sessionId = Math.random();
-  @Input() productDetail: any;
+  @Input() product: any;
   @Output() onSelected = new EventEmitter<any>();
   sidebarVisible: boolean = false;
   subscription: Subscription;
   message: any;
-  product: Product;
   productForm: FormGroup;
+
 
   constructor(private productService: ProductService,
     private store: Store<State>) {
@@ -28,12 +29,11 @@ export class ProductDetailComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.productDetail = '';
-    if(this.productDetail > 0) {
+    this.product = '';
+    if(this.product > 0) {
       this.sidebarVisible = true;
     }
   }
-
 
   displayProduct(product: Product | null): void {
     if (product && this.productForm) {
@@ -50,7 +50,6 @@ export class ProductDetailComponent implements OnInit {
     }
   }
 
-
   updateProduct(product: Product): void {
     this.store.dispatch(ProductPageActions.updateProduct({ product }));
     console.log(product)
@@ -63,18 +62,18 @@ export class ProductDetailComponent implements OnInit {
   
   onSelectedProductDetail(productDetail: any[]) {
     this.onSelected.emit(productDetail);
-    this.store.dispatch(ProductPageActions.setCurrentProduct({ currentProductId: this.productDetail.id }));
-    this.store.dispatch(ProductPageActions.setLastSavedProduct({ lastSavedProductId: this.productDetail }));    
+    this.store.dispatch(ProductPageActions.setCurrentProduct({ currentProductId: this.product.id }));
+    this.store.dispatch(ProductPageActions.setLastSavedProduct({ lastSavedProductId: this.product }));    
   }
 
   setProductList(productDetail: any[]) {
-    this.store.dispatch(ProductPageActions.setCurrentProduct({ currentProductId: this.productDetail.id }));
-    this.store.dispatch(ProductPageActions.setLastSavedProduct({ lastSavedProductId: this.productDetail }));    
+    this.store.dispatch(ProductPageActions.setCurrentProduct({ currentProductId: this.product.id }));
+    this.store.dispatch(ProductPageActions.setLastSavedProduct({ lastSavedProductId: this.product }));    
   }
 
   sendMessage(): void {
     // send message to subscribers via observable subject
-    this.productService.sendMessage(this.productDetail.name + ' email sending');
+    this.productService.sendMessage(this.product.name + ' email sending');
     console.log('email was sending')
 }
 

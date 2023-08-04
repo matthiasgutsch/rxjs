@@ -28,6 +28,13 @@ import { entityConfig } from './entity-metadata';
 import { MainComponent } from './main/main.component';
 import { ToastModule } from 'primeng/toast';
 
+export function getInitialAppState() {
+  const previousSettings = localStorage.getItem("settings")
+  if (previousSettings  != null) {
+       return JSON.parse(previousSettings);
+  }
+  return {};
+}
 
 export const metaReducers: MetaReducer<any>[] = !environment.production ? [] : [];
 
@@ -57,7 +64,7 @@ export const metaReducers: MetaReducer<any>[] = !environment.production ? [] : [
     InputTextModule,
     StoreModule.forFeature('products', productReducer),
     EffectsModule.forFeature([ProductEffects]),
-    StoreModule.forRoot({}, { metaReducers }),
+    StoreModule.forRoot({initialState: getInitialAppState}, { metaReducers }),
     StoreDevtoolsModule.instrument({
       name: 'APM Demo App DevTools',
       maxAge: 25,

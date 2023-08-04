@@ -55,7 +55,6 @@ export class HomeComponent implements AfterViewInit, OnInit {
     private apiService: ApiService
   ) {}
 
-
   ngOnInit(): void {
     this.store.dispatch(ProductPageActions.loadProducts());
     this.selectedProduct$ = this.store.select(getCurrentProduct);
@@ -65,14 +64,11 @@ export class HomeComponent implements AfterViewInit, OnInit {
     this.displayDescription$ = this.store.select(getShowProductDescription);
     this.displayFilter$ = this.store.select(getShowProductFilter);
     this.lastSavedProduct$ = this.store.select(getLastSavedProductId);
-
   }
-
 
   ngAfterViewInit() {
     this.sessionId = this.productList.sessionId;
   }
-
 
   onSelectedProduct(product: string) {
     this.productService.setProduct(product);

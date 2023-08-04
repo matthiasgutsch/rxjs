@@ -32,12 +32,5 @@
 </p-sidebar>
 
 <p-sidebar [(visible)]="showList">
-
-  <ng-container *ngIf="lastSavedProduct">
-    <div class="col-sm-12">
-      {{ lastSavedProduct.id }}
-      {{ lastSavedProduct.name }}
-    </div>
-  </ng-container>
-
+  {{lastSavedProduct$ | async | json}}
 </p-sidebar>

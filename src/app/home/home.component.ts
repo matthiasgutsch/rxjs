@@ -14,6 +14,7 @@ import {
   State,
   getCurrentProduct,
   getError,
+  getLastSavedProductId,
   getProducts,
   getShowProductCode,
   getShowProductDescription,
@@ -44,6 +45,7 @@ export class HomeComponent implements AfterViewInit, OnInit {
   products$: Observable<Product[]>;
   errorMessage$: Observable<string>;
   lastSavedProduct: any;
+  lastSavedProduct$: Observable<Product[]>;
 
   constructor(
     private productService: ProductService,
@@ -53,6 +55,7 @@ export class HomeComponent implements AfterViewInit, OnInit {
     private apiService: ApiService
   ) {}
 
+
   ngOnInit(): void {
     this.store.dispatch(ProductPageActions.loadProducts());
     this.selectedProduct$ = this.store.select(getCurrentProduct);
@@ -61,11 +64,15 @@ export class HomeComponent implements AfterViewInit, OnInit {
     this.displayCode$ = this.store.select(getShowProductCode);
     this.displayDescription$ = this.store.select(getShowProductDescription);
     this.displayFilter$ = this.store.select(getShowProductFilter);
+    this.lastSavedProduct$ = this.store.select(getLastSavedProductId);
+
   }
+
 
   ngAfterViewInit() {
     this.sessionId = this.productList.sessionId;
   }
+
 
   onSelectedProduct(product: string) {
     this.productService.setProduct(product);
@@ -75,17 +82,21 @@ export class HomeComponent implements AfterViewInit, OnInit {
     this.sidebarVisible = true;
   }
 
+
   saveProduct(product: Product): void {
     this.store.dispatch(ProductPageActions.createProduct({ product }));
   }
+
 
   updateProduct(product: Product): void {
     this.store.dispatch(ProductPageActions.updateProduct({ product }));
   }
 
+
   onSelectedProductDetail(productDetail: any[]) {
     this.onSelectedProductDetailChange();
   }
+
 
   onSelectedProductDetailChange() {
     this.sidebarVisible = false;
@@ -94,11 +105,6 @@ export class HomeComponent implements AfterViewInit, OnInit {
       summary: 'Saving',
       detail: this.selectedProduct.name,
     });
-    this.lastSavedProduct = this.selectedProduct;
-    this.store.dispatch(
-      ProductPageActions.setLastSavedProduct({
-        lastSavedProductId: this.lastSavedProduct,
-      })
-    );
+
   }
 }

@@ -27,6 +27,7 @@ import { environment } from 'src/environments/environment';
 import { entityConfig } from './entity-metadata';
 import { MainComponent } from './main/main.component';
 import { ToastModule } from 'primeng/toast';
+import { HeaderComponent } from './components/header/header.component';
 
 export function getInitialAppState() {
   const previousSettings = localStorage.getItem("settings")
@@ -44,6 +45,7 @@ export const metaReducers: MetaReducer<any>[] = !environment.production ? [] : [
     AppComponent,
     HomeComponent,
     ProductListComponent,
+    HeaderComponent,
     ProductDetailComponent,
     SidebarComponent,
     MainComponent

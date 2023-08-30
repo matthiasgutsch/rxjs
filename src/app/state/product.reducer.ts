@@ -10,7 +10,7 @@ export interface ProductState {
   showProductDescription: boolean;
   showProductFilter: boolean;
   currentProductId: number | null;
-  lastSavedProductId: any | null;
+  lastSavedProductId: Product[];
   products: Product[];
   error: string;
 }
@@ -20,7 +20,7 @@ const initialState: ProductState = {
   showProductDescription: true,
   showProductFilter: true,
   currentProductId: null,
-  lastSavedProductId: null,
+  lastSavedProductId: [],
   products: [],
   error: ''
 };

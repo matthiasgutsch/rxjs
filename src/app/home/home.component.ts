@@ -78,6 +78,12 @@ export class HomeComponent implements AfterViewInit, OnInit {
     this.sidebarVisible = true;
   }
 
+  addTodo(product: string) {
+    this.productService.setProduct(product);
+    this.productService.selectedProduct$.subscribe((value) => {
+      this.selectedProduct = value;
+    });
+  }
 
   saveProduct(product: Product): void {
     this.store.dispatch(ProductPageActions.createProduct({ product }));

@@ -7,6 +7,8 @@ export const toggleProductCode = createAction(
   '[Product Page] Toggle Product Code'
 );
 
+export const Add = createAction('[Todo Component] Add', props<{  product: Product  }>());
+
 export const toggleProductDescription = createAction(
   '[Product Page] Toggle Product Description'
 );

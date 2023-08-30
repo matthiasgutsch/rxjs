@@ -6,6 +6,7 @@ import { State } from 'src/app/state';
 import { Store } from '@ngrx/store';
 import { Product } from 'src/app/model/product';
 import { FormGroup } from '@angular/forms';
+import { Add } from 'src/app/state/actions/product-page.actions';
 
 @Component({
   selector: 'app-product-detail',
@@ -59,10 +60,10 @@ export class ProductDetailComponent implements OnInit {
     this.store.dispatch(ProductPageActions.createProduct({ product }));
   }
 
-  onSelectedProductDetail(productDetail: any[]) {
+  onSelectedProductDetail(productDetail: Product[]) {
     this.onSelected.emit(productDetail);
-    this.store.dispatch(ProductPageActions.setCurrentProduct({ currentProductId: this.product.id }));
-    this.store.dispatch(ProductPageActions.setLastSavedProduct({ lastSavedProductId: this.product }));    
+    this.store.dispatch(Add({ product: this.product }));
+
   }
 
   setProductList(productDetail: any[]) {

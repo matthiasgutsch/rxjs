@@ -9,7 +9,7 @@
     </tr>
   </ng-template>
   <ng-template pTemplate="body" let-product>
-    <tr (click)="onSelectedProduct(product, product.id)">
+    <tr >
       <td>{{ product.id }}</td>
       <td>{{ product.name }}</td>
       <td>{{ product.email }}</td>
@@ -18,9 +18,22 @@
         <p-button
           class="float-right"
           label="edit"
-          (click)="onSelectedProduct(product, product.id)"
+          (click)="onSelectedProduct(product)"
         ></p-button>
       </td>
+
+      <td>
+        <p-button
+          class="float-right"
+          label="add to list"
+          (click)="addTodo(product)"
+        ></p-button>
+      </td>
+  
+
+      
     </tr>
   </ng-template>
 </p-table>
+
+

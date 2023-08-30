@@ -27,7 +27,6 @@ export class HeaderComponent implements OnInit {
   sessionId: any;
   sidebarVisible: boolean = false;
   showList: boolean = false;
-
   message: any;
   subscription: Subscription;
   newTodoText: string = '';
@@ -58,23 +57,17 @@ export class HeaderComponent implements OnInit {
     this.lastSavedProduct$ = this.store.select(getLastSavedProductId);
   }
 
-
- 
-
   saveProduct(product: Product): void {
     this.store.dispatch(ProductPageActions.createProduct({ product }));
   }
-
 
   updateProduct(product: Product): void {
     this.store.dispatch(ProductPageActions.updateProduct({ product }));
   }
 
-
   onSelectedProductDetail(productDetail: any[]) {
     this.onSelectedProductDetailChange();
   }
-
 
   onSelectedProductDetailChange() {
     this.sidebarVisible = false;

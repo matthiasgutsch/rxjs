@@ -8,6 +8,11 @@ export const loadProductsSuccess = createAction(
   props<{ products: Product[] }>()
 );
 
+export const loadProductsStoreSuccess = createAction(
+  '[Product API] Load Store Success',
+  props<{ lastSavedProduct: Product[] }>()
+);
+
 export const loadProductsFailure = createAction(
   '[Product API] Load Fail',
   props<{ error: string }>()
